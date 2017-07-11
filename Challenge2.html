@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <script>
+        
+        function squared (i){
+            console.log(i*i);
+        }
+
+        var i = squared(2);
+
+        function sumThree (a, b, c){
+            console.log(a+b+c);
+        }
+        
+        sumThree(1,2,3);
+       
+       var person ={
+           name: "Adam",
+           age: 24,
+           occupation: "Trainee"
+       };
+       console.log(person);
+
+       person.name = "James",
+       person.age = 21,
+       person.occupation = "Nonce"
+       
+       console.log(person);
+
+       function buttonWorks(){
+           console.log("The button works!");
+       } 
+
+       function increaseAge(){
+           console.log(person.age += 1);
+       }
+
+        </script>
+    </head>
+            <body>
+                <form>
+                    <input type="button" onclick="buttonWorks()" value="Push Me" />
+                    <input type="button" onclick="increaseAge()" value="Increase Age" />
+                </form>
+            </body>
+</html>
+
+<!--Functions
+	Create a function accepts a number and outputs its square
+	Create a function that accepts 3 numbers and returns the sum of them.
+	Create a Person object with three values, name, age, occupation.
+Output the contents of that object, then edit them, and output again.
+	Create a button that calls a function when clicked.
+	Create a button that increases the age of your Person object.
+ -->
