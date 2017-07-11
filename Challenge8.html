@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html>
+   <header>
+</header>
+
+<section>
+</section>
+</html>
+
+<script>
+    var header = document.querySelector('header');
+    var section = document.querySelector('section');
+
+    var requestURL = "https://raw.githubusercontent.com/ewomackQA/JSONDataRepo/master/example.json";
+    var request = new XMLHttpRequest();
+    request.open("GET", requestURL);
+    request.responseType = 'json';
+    request.send();
+
+    request.onload = function() {
+        var superHeroes = request.response;
+        populateHeader(superHeroes);
+        showHeroes(superHeroes);
+    }
+</script>
+
+
+
+
+
+
+
+
+
+<!--
+    Using VanillaJS, access the JSON file at this address
+https://github.com/womackx/JSONDataRepo/blob/master/example.json
+Once loaded, display those objects on your page.
+
+Similarly, load this JSON file at this address
+https://github.com/womackx/JSONDataRepo/blob/master/kings.json
+Instead of loading all the object on the page, have a text box that will take an 
+attribute that belongs to these objects, and output the contents of the specific object 
+it’s associated with
+-->
