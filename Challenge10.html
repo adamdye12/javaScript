@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <label> Select The Make Of Vehicle:</label>
+            <select id="make" onclick="chooseModel()">
+                <option selected="">Please Select</option>
+                <option value="audi">Audi</option>
+                <option value="bmw">BMW</option> 
+            </select>
+        <br>
+        <br>
+
+        <label>Select The Model:</label>
+            <select id="model">
+            </select>   
+        <br>
+        <br>
+
+        <label>Enter The Reg Number:</label>
+            <input type="text" id="reg">
+            <input type="button" value="Submit" />
+        <br>
+        <br>
+
+        <label>Enter the Number of Faults:</label>
+            <input type="text" id="reg">
+            <input type="button" value="Submit" />
+    </head>
+    <body>
+    </body>
+</html>
+
+<script>
+    function chooseModel() {
+        let selectedMake = document.getElementById("make").value;
+        let selectModel = document.getElementById("model");
+        let option =document.createElement("option");
+        clearModels(selectModel);
+
+    if (selectedMake == "audi"){
+        option.text = option.value = "r8";
+        selectModel.add(option);
+    }
+     else if (selectedMake == "bmw"){
+        option.text = option.value = "m5";
+        selectModel.add(option);
+    }   
+}
+    function clearModels(selectBox) {
+        for (let i = selectBox.options.length-1; i>=0; i--){
+            selectBox.remove(i);
+        }
+    }
+</script>
+
+
+
+
+
+
+<!--Create a virtual garage with the following functionality;
+Check in cars to the garage
+Check out cars
+Output the contents of the garage
+Calculate the bill for a car, dependant on its attributes
+All of these should be able to be done via a user interface, 
+as well as the following non-garage related features;
+Creating cars
+Creating cars with no faults
+Creating cars with numerous faults
+-->
