@@ -58,6 +58,7 @@
     };
     carArray.push(carObject);
     printCar();
+    displayGarage();
 }
     
     function printCar(){
@@ -68,7 +69,16 @@
 
     function displayGarage(){
         let listBox = document.getElementById("garage");
-        for (i = 0; )
+        for (i = 0; i < carObject.length; i++){
+            //listBox.options[listBox.options.length] = new Option()
+        let option = document.getElementById("option")
+        option.text = carObject[i].make + " " +carObject[i].model 
+            + carObject[i].reg + carObject[i].faults;
+              //listBox.carArray.add(new Option(cararray[i].make, cararray.model[i], cararray.reg[i], cararray.faults[i]));
+            listBox.add(option);
+        }
+        //carArray.forEach((carArray) => listBox.add(new Option())
+        
     }
 
     function removeCar(){

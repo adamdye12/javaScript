@@ -1,0 +1,147 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <label> Choose Your Attacking Pokemon:</label>
+            <br>
+            <select size="20" id="pokeAtt" onclick="displayMoves()">   
+            </select>
+            <br><br>
+
+            <label> Choose Your Attack:</label>
+            <br>
+            <select size="20" id="pokeMove">
+            </select>
+            <br><br>
+
+            <label> Choose Your Poke Victim:</label>
+            <br>
+            <select size="20" id="pokeDef">
+            </select>
+
+    </head>
+    <body>
+    </body>
+</html>
+
+<script>
+
+    function getPokemon(){
+    let requestURL = "http://pokeapi.co/api/v2/pokemon/?limit=811";
+    let request = new XMLHttpRequest();
+    request.open("GET", requestURL);
+    request.responseType = "json";
+    request.send();
+    request.onload = function() {
+        let pokemon = request.response;
+        displayPokemon(pokemon);
+        }
+    }
+    function displayPokemon(jsonObj){
+        let pokemon = jsonObj["results"];
+        let select = document.getElementById("pokeAtt");
+        //populate att list
+        for (i = 0; i < pokemon.length; i++){
+            let option = document.createElement("option");
+            option.text = option.value = pokemon[i].name;
+            select.add(option, select.length);
+        }
+        //populate def list
+        let selectDef = document.getElementById("pokeDef");
+        for (i = 0; i < pokemon.length; i++){
+            let option = document.createElement("option");
+            option.text = option.value = pokemon[i].name;
+            selectDef.add(option, selectDef.length);
+        }
+    }
+    function getStatus(){
+    let requestURL = "http://pokeapi.co/api/v2/move-damage-class/1/";
+    let request = new XMLHttpRequest();
+    request.open("GET", requestURL);
+    request.responseType = "json";
+    request.send();
+    request.onload = function() {
+        let jsonObj = request.response;
+        createArray();
+        }
+    }
+
+    function createArray(jsonObj){
+        let statusMoves = jsonObj["moves"]
+        for(let i = o; i < statusName.length; i++){
+            statusArray.push(statusMoves[i].name)
+        }
+
+    }
+
+    function displayMoves(){
+        // clear list
+         for(let i = pokeMove.options.length -1; i >= 0; i--){
+            pokeMove.remove(i);
+        }
+
+        let pokemonID = (document.getElementById("pokeAtt").selectedIndex + 1);
+        let pokemonURL = "http://pokeapi.co/api/v2/pokemon/" + pokemonID;
+        let requestMove = new XMLHttpRequest();
+        requestMove.open("GET", pokemonURL);
+        requestMove.responseType = "json";
+        requestMove.send();
+        requestMove.onload = function() {
+            let moves = requestMove.response;
+            console.log(moves, pokemonURL);
+            listMoves(moves);
+        }
+        
+    function listMoves(jsonObj){
+        let pokemonMove = jsonObj["moves"];
+        let selectMove = document.getElementById("pokeMove");
+        //populate move list
+        for (let i = 0; i < pokemonMove.length; i++){
+            let option = document.createElement("option");
+            option.text = option.value = pokemonMove[i].move.name;
+            selectMove.add(option, selectMove.length);
+        }
+        //http://pokeapi.co/api/v2/move-damage-class/1/
+    }
+     function Moves(jsonObj){
+        let pokemonMove = jsonObj["moves"];
+        let selectMove = document.getElementById("pokeMove");
+        //populate move list
+        for (let i = 0; i < pokemonMove.length; i++){
+            let option = document.createElement("option");
+            option.text = option.value = pokemonMove[i].move.name;
+            selectMove.add(option, selectMove.length);
+        }
+     } 
+ }
+</script>
+
+<!-- Project Brief
+
+
+
+In the popular Pokémon games all moves and Pokémons have types that determine how effective certain moves are against certain Pokémons.
+These work by some very simple rules, a certain type can be super effective, normal, not very effective or have no effect at all against another type. These translate respectively to 2x, 1x, 0.5x and 0x damage multiplication.
+If a Pokémon has multiple types the effectiveness of a move against this Pokémon will be the product of the effectiveness of the move to it's types.
+Input
+The program should take the type of a move being used and the types of the Pokémon it is being used on.
+Example inputs
+ fire -> grass
+ fighting -> ice rock
+ psychic -> poison dark
+ water -> normal
+ fire -> rock
+
+Output
+The program should output the damage multiplier these types lead to.
+Example outputs
+2x
+4x
+0x
+1x
+0.5x
+Hint: Use arrays, map them against each other.
+Additional
+1.	Create a GUI
+2.	Use pokemonAPI to gather the data instead of hardcoding it
+a.	http://pokeapi.co/
+-->
